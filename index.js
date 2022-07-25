@@ -37,11 +37,14 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 	res.status(200).json("File has been uploaded");
 });
 
+app.get("/", async (req, res) => {
+	res.send("Hy! API is working");
+});
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
-app.listen("5000", () => {
+app.listen(process.env.PORT, () => {
 	console.log("Backend is running.");
 });
